@@ -1,5 +1,5 @@
-include ':camera'
-include ':audiorecord'
 include ':accelerometer'
 include ':app'
 rootProject.name = "Practice_5"
+include ':camera'
+include ':audiorecord'
