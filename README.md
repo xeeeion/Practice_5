@@ -1,4 +1,2 @@
-# Practice_5
-# Practice_5
-# Practice_5
-# Practice_5
+fixed all bugs
+31.05.2021
