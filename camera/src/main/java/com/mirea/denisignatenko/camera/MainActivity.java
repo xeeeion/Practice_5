@@ -1,5 +1,6 @@
 package com.mirea.denisignatenko.camera;
 
+
 import android.Manifest;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -67,18 +68,11 @@ public class MainActivity extends AppCompatActivity {
             }
             // генерирование пути к файлу на основе authorities
             String authorities = getApplicationContext().getPackageName() + ".fileprovider";
-            imageUri = FileProvider.getUriForFile(this, "com.mirea.matyash.camera.fileprovider", photoFile);
+            imageUri = FileProvider.getUriForFile(this, "com.mirea.denisignatenko.camera.fileprovider", photoFile);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
             startActivityForResult(cameraIntent, CAMERA_REQUEST);
         }
     }
-    /**
-     * Производится генерирование имени файла на основе текущего времени и создание файла
-     * в директории Pictures на ExternelStorage.
-     * class.
-     * @return File возвращается объект File .
-     * @exception IOException если возвращается ошибка записи в файл
-     */
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "IMAGE_" + timeStamp + "_";
@@ -94,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 // производится проверка полученного результата от пользователя на запрос разрешения Camera
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_PERMISSION_CAMERA) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
